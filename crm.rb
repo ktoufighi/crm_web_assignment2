@@ -1,4 +1,7 @@
+require_relative 'contact'
 require 'sinatra'
+
+Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
 
 get '/' do
   @crm_app_name = "Kathy's CRM"
@@ -11,7 +14,13 @@ get '/home' do
 end
 
 get '/contact' do
+  contact = Contact.find(1000)
   erb :contact
+end
+
+get '/contact/1' do
+  @contact = Contact.find(1)
+  erb :show_contact
 end
 
 get '/about' do
@@ -28,6 +37,10 @@ end
 
 get '/delete' do
   erb :delete
+end
+
+get '/edit' do
+  erb :edit
 end
 
 # post '/contact' do
