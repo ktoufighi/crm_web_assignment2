@@ -5,14 +5,12 @@
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-
 }
 
 .container {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 header {
@@ -26,7 +24,6 @@ header {
 }
 
 h1 {
-
 }
 
 h4 {
@@ -40,6 +37,11 @@ h4 {
   padding-bottom: 20px;
   padding-right: 20px;
   border-bottom: 10px solid white;
+}
+
+.text_deco {
+  text-decoration: underline;
+  color: #fa8072;
 }
 
 .nav-item {
@@ -76,7 +78,7 @@ p {
 .num p {
   background-color: #fa8072;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 300;
   margin: 10px 20px 10px;
   padding: 10px;
 }
@@ -85,15 +87,8 @@ p {
   text-decoration: none;
 }
 
-
 body {
-
 }
-
-style {
-  font
-}
-
 
 footer {
   background-color: black;
@@ -103,4 +98,4 @@ footer {
   text-align: center;
   padding: 10px;
   width: 100;
-};
+}
