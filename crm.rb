@@ -2,10 +2,14 @@ require_relative 'contact'
 require 'sinatra'
 
 Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
+Contact.create('Marty', 'McFly', 'marty@mcfly.com', 'Teacher')
+Contact.create('George','McFly', 'george@mcfly.com', 'Nurse')
+Contact.create('Biff', 'Tannen', 'biff@tannen.com', 'Politician')
+Contact.create('Kathy', 'Toufighi', 'kathy@toufighi.com', 'Bitmaker student')
+
 
 get '/' do
   @crm_app_name = "Kathy's CRM"
-  @server_time = Time.now
   erb :index
 end
 
@@ -18,21 +22,25 @@ get '/contact' do
   erb :contact
 end
 
-get '/contact/1' do
-  @contact = Contact.find(1)
-  erb :show_contact
+get '/contact/:id' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    erb :show_contact
+  else
+    raise Sinatra::NotFound
+  end
 end
 
 get '/about' do
   erb :about
 end
 
-get '/add_contact' do
-  erb :add_contact
+get '/contact/new' do
+  erb :contact_new
 end
 
-get '/update' do
-  erb :new_contact
+get '/contact/update' do
+  erb :contact_update
 end
 
 get '/delete' do

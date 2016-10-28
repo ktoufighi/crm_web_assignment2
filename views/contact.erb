@@ -1,28 +1,6 @@
-<section class= 'num'>
-  <p>There are <strong> 5 </strong>contacts</p>
-</section>
-
+<% Contact.all.each do |contact| %>
 <section class='contact'>
-  <p>Marty McFly (marty@mcfly.com)</p>
+  <p><%= contact.first_name %> <%= contact.last_name %> (<%= contact.email %>)</p>
     <h4><a href="#">Edit</a> | <a href="#">Delete</a></h4>
 </section>
-
-<section class='contact'>
-  <p>George McFly (george@mcfly.com)</p>
-    <h4><a href="#">Edit</a> | <a href="#">Delete</a></h4>
-</section>
-
-<section class='contact'>
-  <p>Lorraine McFly (lorraine@mcfly.com)</p>
-    <h4><a href="#">Edit</a> | <a href="#">Delete</a></h4>
-</section>
-
-<section class='contact'>
-  <p>Biff Tannen (biff@tannen.com)</p>
-    <h4><a href="#">Edit</a> | <a href="#">Delete</a></h4>
-</section>
-
-<section class='contact'>
-  <p>Doc Brown (doc@brown.com)</p>
-    <h4><a href="#">Edit</a> | <a href="#">Delete</a></h4>
-</section>
+<% end %>
