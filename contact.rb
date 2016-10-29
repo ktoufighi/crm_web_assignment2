@@ -90,13 +90,6 @@ class Contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
     @@contacts.delete(self)
-    # @@contacts.each do |contact|
-    #   if contact.id == id
-    #     count = id - 1
-    #     @@contacts.delete_at(count)
-    #   end
-    # end
   end
 
-  # Feel free to add other methods here, if you need them.
 end
