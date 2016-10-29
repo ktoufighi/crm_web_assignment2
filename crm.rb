@@ -22,6 +22,10 @@ get '/contact' do
   erb :contact
 end
 
+get '/contact/new' do
+  erb :contact_new
+end
+
 get '/contact/:id' do
   @contact = Contact.find(params[:id].to_i)
   if @contact
@@ -31,24 +35,39 @@ get '/contact/:id' do
   end
 end
 
-get '/about' do
-  erb :about
+get '/contact/:id/edit' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    erb :edit_contact
+  else
+    raise Sinatra::NotFound
+  end
 end
 
-get '/contact/new' do
-  erb :contact_new
-end
+# get '/contact/update' do
+#   erb :edit_contact
+# end
 
-get '/contact/update' do
-  erb :contact_update
-end
+# get '/about' do
+#   erb :about
+# end
 
 get '/delete' do
   erb :delete
 end
 
-get '/edit' do
-  erb :edit
+put '/contact/:id' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    @contact.first_name = params[:first_name]
+    @contact.last_name = params[:last_name]
+    @contact.email = params[:email]
+    @contact.note = params[:note]
+
+    redirect to('/contact')
+  else
+    raise Sinatra::NotFound
+  end
 end
 
 # post '/contact' do
