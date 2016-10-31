@@ -7,13 +7,12 @@ Contact.create('George','McFly', 'george@mcfly.com', 'Nurse')
 Contact.create('Biff', 'Tannen', 'biff@tannen.com', 'Politician')
 Contact.create('Kathy', 'Toufighi', 'kathy@toufighi.com', 'Bitmaker student')
 
-
 get '/' do
   @crm_app_name = "Kathy's CRM"
   erb :index
 end
 
-get '/home' do
+get '/about' do
   erb :home
 end
 
@@ -25,6 +24,10 @@ end
 # get '/contact/new' do
 #   erb :contact_new
 # end
+
+get '/contact/contact_new' do
+  erb :contact_new
+end
 
 get '/contact/:id' do
   @contact = Contact.find(params[:id].to_i)
@@ -66,11 +69,6 @@ put '/contact/:id' do
   else
     raise Sinatra::NotFound
   end
-end
-
-get '/contact/contact_new' do
-  puts "fygjyfjufjufy"
-  erb :contact_new
 end
 
 post '/contact/new' do
