@@ -55,12 +55,12 @@ end
 
 put '/contact/:id' do
   @contact = Contact.find(params[:id].to_i)
-  if @contact
-    @contact.first_name = params[:first_name]
-    @contact.last_name = params[:last_name]
-    @contact.email = params[:email]
-    @contact.note = params[:note]
-
+  if @contact.update(
+    first_name: params[:first_name],
+    last_name:  params[:last_name],
+    email:      params[:email],
+    note:       params[:note]
+    )
     redirect to('/contact')
   else
     raise Sinatra::NotFound
@@ -68,7 +68,7 @@ put '/contact/:id' do
 end
 
 post '/contact/' do
-  contact = Contact.create(
+  @contact = Contact.create(
     first_name: params[:first_name],
     last_name:  params[:last_name],
     email:      params[:email],
