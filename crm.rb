@@ -1,11 +1,11 @@
 require_relative 'contact'
 require 'sinatra'
 
-Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
-Contact.create('Marty', 'McFly', 'marty@mcfly.com', 'Teacher')
-Contact.create('George','McFly', 'george@mcfly.com', 'Nurse')
-Contact.create('Biff', 'Tannen', 'biff@tannen.com', 'Politician')
-Contact.create('Kathy', 'Toufighi', 'kathy@toufighi.com', 'Bitmaker student')
+# Contact.create('Johnny', 'Bravo', 'johnny@bitmakerlabs.com', 'Rockstar')
+# Contact.create('Marty', 'McFly', 'marty@mcfly.com', 'Teacher')
+# Contact.create('George','McFly', 'george@mcfly.com', 'Nurse')
+# Contact.create('Biff', 'Tannen', 'biff@tannen.com', 'Politician')
+# Contact.create('Kathy', 'Toufighi', 'kathy@toufighi.com', 'Bitmaker student')
 
 get '/' do
   @crm_app_name = "Kathy's CRM"
@@ -17,13 +17,9 @@ get '/about' do
 end
 
 get '/contact' do
-  contact = Contact.find(1000)
+  # contact = Contact.find(1000)
   erb :contact
 end
-
-# get '/contact/new' do
-#   erb :contact_new
-# end
 
 get '/contact/contact_new' do
   erb :contact_new
@@ -72,6 +68,16 @@ put '/contact/:id' do
 end
 
 post '/contact/' do
-  Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
-  redirect to ('/contact')
+  contact = Contact.create(
+    first_name: params[:first_name],
+    last_name:  params[:last_name],
+    email:      params[:email],
+    note:       params[:note]
+  )
+  redirect to('/contact')
+end
+
+
+after do
+  ActiveRecord::Base.connection.close
 end
