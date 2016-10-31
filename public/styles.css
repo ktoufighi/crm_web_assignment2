@@ -67,6 +67,15 @@ h4 {
   color: #333
 }
 
+.title2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  display: block;
+  font-size: 16px;
+  color: #333
+}
+
 .list_link {
   list-style-type: none;
   padding-top: 20px;

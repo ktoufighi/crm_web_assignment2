@@ -22,9 +22,9 @@ get '/contact' do
   erb :contact
 end
 
-get '/contact/new' do
-  erb :contact_new
-end
+# get '/contact/new' do
+#   erb :contact_new
+# end
 
 get '/contact/:id' do
   @contact = Contact.find(params[:id].to_i)
@@ -54,18 +54,6 @@ get '/contact/:id/edit' do
   end
 end
 
-# get '/contact/update' do
-#   erb :edit_contact
-# end
-
-# get '/about' do
-#   erb :about
-# end
-
-# get '/delete' do
-#   erb :delete
-# end
-
 put '/contact/:id' do
   @contact = Contact.find(params[:id].to_i)
   if @contact
@@ -80,7 +68,12 @@ put '/contact/:id' do
   end
 end
 
-# post '/contact' do
-#   Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
-#   redirect to ('/contacts')
-# end
+get '/contact/contact_new' do
+  puts "fygjyfjufjufy"
+  erb :contact_new
+end
+
+post '/contact/new' do
+  Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
+  redirect to ('/contact')
+end

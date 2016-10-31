@@ -92,4 +92,7 @@ class Contact
     @@contacts.delete(self)
   end
 
+  def created_at
+
+  end
 end

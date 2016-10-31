@@ -1,6 +1,9 @@
+<class="title2"> There are <%= Contact.all.count %> contacts
+</section>
+
 <% Contact.all.each do |contact| %>
 <section class='contact'>
   <p><%= contact.first_name %> <%= contact.last_name %> (<%= contact.email %>)</p>
-    <h4><a href="/contact/edit">Edit</a> | <a href="/contact/delete">Delete</a></h4>
+    <h4><a href="/contact/<%= contact.id %>/edit">Edit</a> | <a href="/contact/<%= contact.id %>">Delete</a></h4>
 </section>
 <% end %>
